@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+	<title>jsdom test</title>
+	<style>
+		h1 {
+			color: green;
+		}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			console.log('DOMContentLoaded fired');
+			const messageElem = document.querySelector('.message');
+			messageElem.innerText += ' > DOMContentLoaded fired';
+		});
+		window.addEventListener('load', () => {
+			console.log('load fired');
+			const messageElem = document.querySelector('.message');
+			messageElem.innerText += ' > load fired';
+		});
+	</script>
+</head>
+<body>
+	<h1>JS-DOM Test</h1>
+	<p class="message">initial message</p>
+	<script>
+		console.log('message written');
+	</script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag-and-Drop Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .quiz-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .question {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .answer-box {
+            width: 200px;
+            height: 100px;
+            background-color: #f0f0f0;
+            border: 2px solid #ccc;
+            margin: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .draggable {
+            cursor: pointer;
+        }
+
+        #red, #yellow, #blue {
+            cursor: pointer;
+            user-drag: element;
+        }
+
+        .correct {
+            background-color: green;
+        }
+
+        .incorrect {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <div class="question">
+            What color is the sky?
+        </div>
+        <div class="answer-box" id="color-box" ondragover="event.preventDefault();" ondrop="checkAnswer(event)"></div>
+        <p id="red" class="draggable" draggable="true" ondragstart="drag(event)">red</p>
+        <p id="blue" class="draggable" draggable="true" ondragstart="drag(event)">blue</p>
+        <p id="yellow" class="draggable" draggable="true" ondragstart="drag(event)">yellow</p>
+    </div>
+
+    <script>
+        function drag(event) {
+            event.dataTransfer.setData("text/plain", event.target.id);
+        }
+
+        function checkAnswer(event) {
+            event.preventDefault();
+            const draggedElementId = event.dataTransfer.getData("text/plain");
+            const answerBox = document.getElementById("color-box");
+
+            if (draggedElementId === "blue") {
+                answerBox.innerHTML = "Correct! The sky is blue.";
+                answerBox.classList.add("correct");
+            } else {
+                answerBox.innerHTML = "Incorrect. Try again!";
+                answerBox.classList.add("incorrect");
+            }
+        }
+    </script>
+</body>
+</html>

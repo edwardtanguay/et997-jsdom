@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+
+<head>
+	<style>
+		body {
+			padding: 1rem;
+		}
+		.container {
+			background-color: green;
+			padding: 1rem;
+			width: 40rem;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div>Click on the input to set focus.</div>
+		<div>Name: <input class="name"
+				   type="text" /></div>
+		<div>
+			Info1: <input class="info1"
+				   type="text" />
+		</div>
+		<div>
+			Info2: <input class="info2"
+				   type="text" />
+		</div>
+	</div>
+	<p class="message1"></p>
+	<p class="message2"></p>
+	<script>
+		const containerElem = document.querySelector('.container');
+		const nameElem = document.querySelector('.name');
+		const message1Elem = document.querySelector('.message1');
+		const message2Elem = document.querySelector('.message2');
+
+		nameElem.addEventListener('focus', () => {
+			message1Elem.innerHTML = 'input field focused with <b>focus</b>';
+			nameElem.style.backgroundColor = 'yellow';
+		});
+		containerElem.addEventListener('focusin', () => {
+			message2Elem.innerHTML = 'container div focused with <b>focusin</b> which bubbles up to div';
+			containerElem.style.backgroundColor = 'lightgreen';
+		});
+
+	</script>
+</body>
+
+</html>

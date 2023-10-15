@@ -5,26 +5,34 @@
 	<style>
 		body {
 			padding: 1rem;
+			font-family: sans-serif;
 		}
 		.container {
 			background-color: green;
 			padding: 1rem;
 			width: 40rem;
 		}
+		div {
+			margin-top: .5rem;
+		}
+		div span {
+			width: 2.9rem;
+			display: inline-block;
+		}
 	</style>
 </head>
 
 <body>
 	<div class="container">
-		<div>Click on the input to set focus.</div>
-		<div>Name: <input class="name"
+		<section>Click on the inputs to set focus.</section>
+		<div><span>Name:</span> <input class="name"
 				   type="text" /></div>
 		<div>
-			Info1: <input class="info1"
+			<span>Info1:</span> <input class="info1"
 				   type="text" />
 		</div>
 		<div>
-			Info2: <input class="info2"
+			<span>Info2:</span> <input class="info2"
 				   type="text" />
 		</div>
 	</div>
@@ -42,7 +50,7 @@
 		});
 		containerElem.addEventListener('focusin', () => {
 			message2Elem.innerHTML = 'container div focused with <b>focusin</b> which bubbles up to div';
-			containerElem.style.backgroundColor = 'lightgreen';
+			containerElem.style.backgroundColor = '#2eb82e';
 		});
 
 	</script>

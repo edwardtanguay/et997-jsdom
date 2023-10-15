@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
 	<title>jsdom test</title>
 	<style>
@@ -16,9 +17,16 @@
 			console.log('load fired');
 			const messageElem = document.querySelector('.message');
 			messageElem.innerText += ' > load fired';
+			window.addEventListener('click', function (evt) {
+				if (evt.detail === 3) {
+					alert('triple click!');
+				}
+			});
 		});
+
 	</script>
 </head>
+
 <body>
 	<h1>JS-DOM Test</h1>
 	<p class="message">initial message</p>
@@ -26,4 +34,5 @@
 		console.log('message written');
 	</script>
 </body>
+
 </html>

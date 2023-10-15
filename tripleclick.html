@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<head>
+	<title>triple-click test</title>
+	<style>
+		.infoClickArea {
+			background-color: orange;
+			width: 15rem;
+			height: 15rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 1.5rem;
+			border-radius: 1rem;
+			user-select: none;
+		}
+
+		.infoMessage {
+			font-size: 1.5rem;
+		}
+	</style>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+			const infoClickAreaElem = document.querySelector('.infoClickArea');
+			const infoMessageElem = document.querySelector('.infoMessage');
+
+			// triple click
+			infoClickAreaElem.addEventListener('click', function (evt) {
+				if (evt.detail === 3) {
+					infoMessageElem.innerHTML = 'the <b>triple click</b> info';
+				}
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<h1>clicking test</h1>
+	<div class="infoClickArea">
+		<div>triple-click for info</div>
+	</div>
+	<p class="infoMessage">initial message</p>
+</body>
+
+</html>
